@@ -19,6 +19,6 @@ func InitBot(token string) (*Handler, error) {
 	}, nil
 }
 
-func (h *Handler) InitRoutes() {
-	h.b.Handle("/hello",h.sayHello)
+func (h *Handler) RunBot() {
+	h.b.Start()
 }
