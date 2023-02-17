@@ -1,5 +1,5 @@
 package telegram
 
 func (h *Handler) InitRoutes() {
-	h.b.Handle("/hello", h.sayHello)
+	h.b.Handle("/weather", h.getWeatherByCity)
 }

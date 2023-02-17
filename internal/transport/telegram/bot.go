@@ -1,12 +1,17 @@
 package telegram
 
-import tele "gopkg.in/telebot.v3"
+import (
+	"github.com/sirupsen/logrus"
+	tele "gopkg.in/telebot.v3"
+)
 
 type Handler struct {
-	b *tele.Bot
+	b       *tele.Bot
+	service *Service
+	lg      *logrus.Logger
 }
 
-func InitBot(token string) (*Handler, error) {
+func InitBot(token string, service *Service, lg *logrus.Logger) (*Handler, error) {
 	pref := tele.Settings{
 		Token: token,
 	}
@@ -15,7 +20,9 @@ func InitBot(token string) (*Handler, error) {
 		return nil, err
 	}
 	return &Handler{
-		b: b,
+		b:       b,
+		service: service,
+		lg:      lg,
 	}, nil
 }
 
