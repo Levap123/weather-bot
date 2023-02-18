@@ -40,6 +40,6 @@ func (us *UserService) Create(ctx context.Context, userID int64, lng, lat float3
 	return us.repo.Create(ctx, user)
 }
 
-func (us *UserService) GetCity(ctx context.Context, userID string) (string, error) {
+func (us *UserService) GetCity(ctx context.Context, userID int64) (string, error) {
 	return us.repo.GetCity(ctx, userID)
 }

@@ -33,7 +33,7 @@ func (ur *UserRepo) Create(ctx context.Context, user *entity.User) error {
 	return nil
 }
 
-func (ur *UserRepo) GetCity(ctx context.Context, userID string) (string, error) {
+func (ur *UserRepo) GetCity(ctx context.Context, userID int64) (string, error) {
 	filter := bson.M{
 		"id": userID,
 	}

@@ -14,7 +14,7 @@ type Storage struct {
 
 type UserRepo interface {
 	Create(ctx context.Context, user *entity.User) error
-	GetCity(ctx context.Context, userID string) (string, error)
+	GetCity(ctx context.Context, userID int64) (string, error)
 }
 
 func NewStorageMongo(cl *mongo.Client) *Storage {
