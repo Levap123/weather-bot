@@ -11,7 +11,7 @@ type Handler struct {
 	lg      *logrus.Logger
 }
 
-func InitBot(token string, service *Service, lg *logrus.Logger) (*Handler, error) {
+func NewHandler(token string, service *Service, lg *logrus.Logger) (*Handler, error) {
 	pref := tele.Settings{
 		Token: token,
 	}
