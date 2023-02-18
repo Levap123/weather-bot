@@ -16,7 +16,7 @@ type WeatherService interface {
 }
 
 type UserService interface {
-	Create(ctx context.Context, user *entity.User) error
+	Create(ctx context.Context, userID int64, lng, lat float32) error
 	GetCity(ctx context.Context, userID string) (string, error)
 }
 
