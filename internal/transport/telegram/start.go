@@ -2,15 +2,15 @@ package telegram
 
 import "gopkg.in/telebot.v3"
 
-func (h *Handler) start(c telebot.Context) error {
-	shareLoc := telebot.ReplyButton{
+var (
+	shareLoc = telebot.ReplyButton{
 
 		Text: "Поделиться локацией?",
 
 		Location: true,
 	}
 
-	repl := &telebot.ReplyMarkup{
+	repl = &telebot.ReplyMarkup{
 
 		ReplyKeyboard: [][]telebot.ReplyButton{
 
@@ -19,5 +19,9 @@ func (h *Handler) start(c telebot.Context) error {
 
 		OneTimeKeyboard: true,
 	}
-	return c.Send("Привет, поделитесь своей локацией чтобы мы могли сохранить ваш город в базе данныхы.", repl)
+)
+
+func (h *Handler) start(c telebot.Context) error {
+
+	return c.Send("Привет, поделитесь своей локацией чтобы мы могли сохранить ваш город в базе данных.", repl)
 }

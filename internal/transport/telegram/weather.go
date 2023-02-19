@@ -20,9 +20,9 @@ func (h *Handler) getWeatherByCity(c telebot.Context) error {
 		city, err = h.service.GetCity(ctx, c.Sender().ID)
 		if err != nil {
 			h.lg.Errorln(err)
-			if errors.Is(err, domain.ErrCityNotFound) {
+			if errors.Is(err, domain.ErrUserNotFound) {
 				return c.Send(`мы не нашли вас в нашей базе данных, пожалуйста, поделитесь своей локацией, либо используйте команду с городом.
-				 Например: /weather Astana`)
+Например: /weather Astana`)
 			}
 			return err
 		}
