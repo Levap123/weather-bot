@@ -10,12 +10,14 @@ func (h *Handler) getQRByLink(c telebot.Context) error {
 	if link == "" {
 		return c.Send(`Например: /qr https://example.org`)
 	}
+
 	err := qrcode.WriteFile(link, qrcode.Medium, 256, "qr.png")
 	if err != nil {
 		h.lg.Errorln(err)
 		c.Send(`Извиняемся, ошибка на сервере`)
 		return err
 	}
+	
 	qr := &telebot.Photo{File: telebot.FromDisk("qr.png")}
 	return c.Send(qr)
 }

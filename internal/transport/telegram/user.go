@@ -2,7 +2,6 @@ package telegram
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"gopkg.in/telebot.v3"
@@ -11,10 +10,12 @@ import (
 func (h *Handler) saveUser(c telebot.Context) error {
 	lat := c.Message().Location.Lat
 	lng := c.Message().Location.Lng
+
 	userID := c.Sender().ID
-	fmt.Println(userID)
+
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*8)
 	defer cancel()
+
 	if err := h.service.UserService.Create(ctx, userID, lng, lat); err != nil {
 		h.lg.Errorln(err)
 		return err
